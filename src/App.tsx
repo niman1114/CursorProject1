@@ -199,65 +199,80 @@ const QuizApp = () => {
   };
 
   return (
-    <div
-      style={{
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-        textAlign: "center",
-      }}
-    >
-      {!showResult ? (
-        <div>
-          <h1>クイズアプリ</h1>
-          <p>
-            問題数: {currentQuestionIndex + 1} / {questions.length}
-          </p>
-          <p>{questions[currentQuestionIndex].question}</p>
-          <div>
-            {questions[currentQuestionIndex].options.map((option, index) => (
-              <button
-                key={index}
-                onClick={() => handleAnswerClick(option)}
-                style={{
-                  margin: "10px",
-                  padding: "10px 20px",
-                  fontSize: "16px",
-                  backgroundColor: "#4CAF50",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                }}
-              >
-                {option}
-              </button>
-            ))}
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center", // 左右中央揃え
+    alignItems: "center", // 上下中央揃え
+    height: "100vh", // 画面全体の高さ
+    margin: "0 auto", // 左右中央揃えの補強
+    textAlign: "center", // 子要素内テキスト中央揃え
+  }}
+>
+  <div
+    style={{
+      width: "90%",
+      maxWidth: "600px",
+      backgroundColor: "#f5f5f5",
+      borderRadius: "10px",
+      padding: "20px",
+      boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+    }}
+  
+      >
+        {!showResult ? (
+          <div className="quiz-container">
+            <h1>クイズアプリ</h1>
+            <p>
+              問題数: {currentQuestionIndex + 1} / {questions.length}
+            </p>
+            <p>{questions[currentQuestionIndex].question}</p>
+            <div>
+              {questions[currentQuestionIndex].options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswerClick(option)}
+                  style={{
+                    margin: "10px",
+                    padding: "10px 20px",
+                    fontSize: "16px",
+                    backgroundColor: "#4CAF50",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      ) : (
-        <div>
-          <h1>結果発表</h1>
-          <p>
-            あなたのスコア: {score} / {questions.length}
-          </p>
-          <p>{getMessage()}</p>
-          <button
-            onClick={handleRestart}
-            style={{
-              marginTop: "20px",
-              padding: "10px 20px",
-              fontSize: "16px",
-              backgroundColor: "#2196F3",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-          >
-            もう一度挑戦する
-          </button>
-        </div>
-      )}
+        ) : (
+          <div>
+            <h1 className="result-container">結果発表</h1>
+            <p>
+              あなたのスコア: {score} / {questions.length}
+            </p>
+            <p>{getMessage()}</p>
+            <button
+              onClick={handleRestart}
+              style={{
+                marginTop: "20px",
+                padding: "10px 20px",
+                fontSize: "16px",
+                backgroundColor: "#2196F3",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              もう一度挑戦する
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

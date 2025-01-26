@@ -49,3 +49,4 @@ export default tseslint.config({
 })
 ```
 # CursorProject1
+# memoApp
